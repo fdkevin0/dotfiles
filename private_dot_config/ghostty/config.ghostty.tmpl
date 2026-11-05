@@ -10,9 +10,11 @@ theme = Apple System Colors
 # theme = light:Catppuccin Latte, dark:Catppuccin Frappe
 
 # Shell & Session
-{{- if eq .chezmoi.os "darwin" }}
+{{- if stat "/opt/homebrew/bin/fish" }}
 command = /opt/homebrew/bin/fish
-{{- else }}
+{{- else if stat "/home/linuxbrew/.linuxbrew/bin/fish" }}
+command = /home/linuxbrew/.linuxbrew/bin/fish
+{{- else if stat "/usr/bin/fish" }}
 command = /usr/bin/fish
 {{- end }}
 working-directory = home

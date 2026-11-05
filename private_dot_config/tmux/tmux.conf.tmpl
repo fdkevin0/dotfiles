@@ -1,7 +1,9 @@
-# Shell
-{{- if eq .chezmoi.os "darwin" }}
+# Shell (only set if fish is installed on this machine)
+{{- if stat "/opt/homebrew/bin/fish" }}
 set -g default-shell /opt/homebrew/bin/fish
-{{- else }}
+{{- else if stat "/home/linuxbrew/.linuxbrew/bin/fish" }}
+set -g default-shell /home/linuxbrew/.linuxbrew/bin/fish
+{{- else if stat "/usr/bin/fish" }}
 set -g default-shell /usr/bin/fish
 {{- end }}
 
@@ -31,8 +33,10 @@ bind % split-window -h -c "#{pane_current_path}"
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'Ataraxy-Labs/opensessions'
 
-{{- if eq .chezmoi.os "darwin" }}
+{{- if stat "/opt/homebrew/opt/tpm/share/tpm/tpm" }}
 run '/opt/homebrew/opt/tpm/share/tpm/tpm'
-{{- else }}
+{{- else if stat (joinPath .chezmoi.homeDir ".tmux/plugins/tpm/tpm") }}
 run '~/.tmux/plugins/tpm/tpm'
+{{- else if stat (joinPath .chezmoi.homeDir ".config/tmux/plugins/tpm/tpm") }}
+run '~/.config/tmux/plugins/tpm/tpm'
 {{- end }}
