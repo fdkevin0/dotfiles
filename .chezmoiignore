@@ -1,0 +1,9 @@
+# Repository metadata (do not deploy to $HOME)
+README.md
+LICENSE
+
+# Runtime / plugin directories that should never be tracked
+.config/tmux/plugins
+.config/tmux/plugins/**
+.config/fish/fish_variables
+.config/nvim/lazy-lock.json
