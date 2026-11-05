@@ -19,7 +19,7 @@ set -s set-clipboard on
 set -g allow-passthrough on
 set -g focus-events on
 set -s extended-keys on
-set -s extended-keys-format csi-u
+set -sq extended-keys-format csi-u
 set -as terminal-features 'xterm*:extkeys:clipboard:RGB:hyperlinks:sync:usstyle'
 
 # Keep current working directory on new window / split
