@@ -1,0 +1,31 @@
+# Appearance & Font
+font-family = FiraCode Nerd Font Mono
+# font-family = "Roboto Mono"
+font-thicken = true
+bold-color = bright
+cursor-style = bar
+
+theme = Apple System Colors
+# theme = light:Apple System Colors Light, dark:Apple System Colors
+# theme = light:Catppuccin Latte, dark:Catppuccin Frappe
+
+# Shell & Session
+{{- if eq .chezmoi.os "darwin" }}
+command = /opt/homebrew/bin/fish
+{{- else }}
+command = /usr/bin/fish
+{{- end }}
+working-directory = home
+window-save-state = always
+shell-integration-features = ssh-terminfo,ssh-env
+
+# Clipboard
+clipboard-read = allow
+copy-on-select = clipboard
+
+# macOS Specifics (ignored on Linux)
+macos-titlebar-style = native
+macos-option-as-alt = true
+
+# Keybindings
+keybind = global:cmd+backquote=toggle_quick_terminal
