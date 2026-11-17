@@ -22,6 +22,7 @@ set -g allow-passthrough on
 set -g focus-events on
 set -s extended-keys on
 set -sq extended-keys-format csi-u
+set -as terminal-features ",tmux-256color:hyperlinks"
 set -as terminal-features 'xterm*:extkeys:clipboard:RGB:hyperlinks:sync:usstyle'
 
 # Keep current working directory on new window / split
